@@ -44,18 +44,24 @@ def decrypt_message(message_text,shift_pos):
       encrypt_letter = char_set[pos - shift_pos]
     decipher_text += encrypt_letter 
     
-  print(decipher_text)  
+  print(decipher_text)
 
   
 
 # main para of program
+end_game= False
 
-direction= input("Type 'encode' to encrypt, type 'decode'to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
-
-if (direction == "encode"):
-  encrypt_message(text,shift)
-
-if (direction == "decode"):
-  decrypt_message(text,shift)
+while not(end_game):
+  direction= input("Type 'Encode' to encrypt, type 'Decode'to decrypt:\n").lower()
+  text = input("Type your message:\n").lower()
+  shift = int(input("Type the shift number:\n"))
+  
+  if (direction == "encode"):
+    encrypt_message(text,shift)
+  
+  if (direction == "decode"):
+    decrypt_message(text,shift)
+  game_continue = input("Type 'Y' to continue playing the game, else type 'N' :").lower()
+  if(game_continue == "n"):
+    end_game= True
+  

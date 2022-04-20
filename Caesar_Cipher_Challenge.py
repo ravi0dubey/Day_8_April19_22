@@ -10,6 +10,7 @@ def encrypt_message(message_text,shift_pos):
   for i in range(0,len(message_text)):
     for j in range(0,len(char_set)):
       if(message_text[i] == char_set[j]):
+        
         input_message[i]= char_set[j+shift_pos]
         break
       

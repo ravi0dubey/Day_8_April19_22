@@ -27,7 +27,7 @@ def encrypt_message(message_text,shift_pos):
       encrypt_letter = char_set[pos+shift_pos]
     cipher_text += encrypt_letter   
     
-  print(cipher_text)
+  print(f"Encoded message: {cipher_text}")
 
 
 #Decrypt function
@@ -44,8 +44,31 @@ def decrypt_message(message_text,shift_pos):
       encrypt_letter = char_set[pos - shift_pos]
     decipher_text += encrypt_letter 
     
-  print(decipher_text)
+  print(f"Decoded Message: {decipher_text}")
 
+#Caesar function- Combined function for both encoding and Decoding
+def caesar(message_text,shift_pos,direction):
+  char_set = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+  decipher_text = " "
+
+  for char in message_text:
+    final_pos = 0
+    pos = char_set.index(char)
+    if(direction== "decode"):
+      if(pos - shift_pos < 0):
+        final_pos= pos - shift_pos + 26
+      else:
+        final_pos= pos - shift_pos 
+    else:
+      if(pos + shift_pos >= 26):
+        final_pos= pos + shift_pos - 26
+      else:
+        final_pos= pos + shift_pos      
+      
+    encrypt_letter = char_set[final_pos]
+    decipher_text += encrypt_letter 
+    
+  print(f"Decoded Message: {decipher_text}")
   
 
 # main para of program
@@ -56,12 +79,16 @@ while not(end_game):
   text = input("Type your message:\n").lower()
   shift = int(input("Type the shift number:\n"))
   
-  if (direction == "encode"):
-    encrypt_message(text,shift)
+#  if (direction == "encode"):
+#    encrypt_message(text,shift)
   
-  if (direction == "decode"):
-    decrypt_message(text,shift)
+#  if (direction == "decode"):
+#    decrypt_message(text,shift)
+
+#commong function Caeasar for both encryption and Decryption  
+  caesar(text,shift,direction)
   game_continue = input("Type 'Y' to continue playing the game, else type 'N' :").lower()
   if(game_continue == "n"):
     end_game= True
   
+

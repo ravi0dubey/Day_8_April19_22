@@ -25,11 +25,30 @@ def encrypt_message(message_text,shift_pos):
       encrypt_letter = char_set[pos+shift_pos - 26]
     else:
       encrypt_letter = char_set[pos+shift_pos]
-    cipher_text += encrypt_letter 
+    cipher_text += encrypt_letter   
     
   print(cipher_text)
 
 
+#Decrypt function
+def decrypt_message(message_text,shift_pos):
+  char_set = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+  decipher_text = " "
+
+
+  for char in message_text:
+    pos = char_set.index(char)
+    if(pos - shift_pos < 0):
+      encrypt_letter = char_set[pos - shift_pos + 26]
+    else:
+      encrypt_letter = char_set[pos - shift_pos]
+    decipher_text += encrypt_letter 
+    
+  print(decipher_text)  
+
+  
+
+# main para of program
 
 direction= input("Type 'encode' to encrypt, type 'decode'to decrypt:\n")
 text = input("Type your message:\n").lower()
@@ -37,3 +56,6 @@ shift = int(input("Type the shift number:\n"))
 
 if (direction == "encode"):
   encrypt_message(text,shift)
+
+if (direction == "decode"):
+  decrypt_message(text,shift)
